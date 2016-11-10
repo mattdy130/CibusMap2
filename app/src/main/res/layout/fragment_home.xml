@@ -3,36 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cibusmap.cibusmap.HomeFragment">
-
     <FrameLayout
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            >
-            <SearchView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_margin="30dp"
-                android:iconifiedByDefault="false"
-                >
 
-            </SearchView>
-            <!--EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_margin="30dp" /-->
-        </RelativeLayout>
     </FrameLayout>
     <ScrollView
         android:layout_width="match_parent"
