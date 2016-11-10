@@ -42,10 +42,6 @@ import static com.cibusmap.cibusmap.R.string.title_activity_user_area;
 public class UserArea extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
-    private List<Movie> movieList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private MoviesAdapter mAdapter;
-
     SupportMapFragment sMapFragment;
     NavigationView mNavigationView;
     Toolbar toolbar;
@@ -90,6 +86,9 @@ public class UserArea extends AppCompatActivity
 
 //////////////////////////
 
+
+
+
 /////////////////////////////
 
 
@@ -103,7 +102,6 @@ public class UserArea extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Home");
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -126,10 +124,6 @@ public class UserArea extends AppCompatActivity
         sfm.beginTransaction().show(sMapFragment).commit();
 
 
-        if (!sMapFragment.isAdded())
-            sfm.beginTransaction().add(R.id.map, sMapFragment).commit();
-        else
-            sfm.beginTransaction().show(sMapFragment).commit();
 
 
     }
@@ -186,6 +180,7 @@ public class UserArea extends AppCompatActivity
         int id = item.getItemId();
 
         if (sMapFragment.isAdded()) {
+
             sfm.beginTransaction().hide(sMapFragment).commit();
         }
 
@@ -207,11 +202,6 @@ public class UserArea extends AppCompatActivity
         } else if (id == R.id.nav_History) {
             toolbar.setTitle("History");
 
-            HistoryFragment HistoryFragment = new HistoryFragment();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction()
-                    .setCustomAnimations(R.anim.anim_slide_from_left, R.anim.slide_out_from_left)
-                    .replace(R.id.RelativeLayout, HistoryFragment, HistoryFragment.getTag()).commit();
 
         } else if (id == R.id.nav_Account_Settings) {
             toolbar.setTitle("Account Settings");
@@ -219,14 +209,11 @@ public class UserArea extends AppCompatActivity
 
         } else if (id == R.id.nav_ChangePass) {
             toolbar.setTitle("Change Password");
-
-
             ChangePasswordFragment ChangePasswordFragment = new ChangePasswordFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setCustomAnimations(R.anim.anim_slide_from_left, R.anim.slide_out_from_left)
                     .replace(R.id.RelativeLayout, ChangePasswordFragment, ChangePasswordFragment.getTag()).commit();
-
 
         } else if (id == R.id.nav_logout) {
 
@@ -268,57 +255,7 @@ public class UserArea extends AppCompatActivity
         return activeNetworkInfo != null;
     }
 
-    private void prepareMovieData() {
-        Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
-        movieList.add(movie);
 
-        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Shaun the Sheep", "Animation", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Up", "Animation", "2009");
-        movieList.add(movie);
-
-        movie = new Movie("Star Trek", "Science Fiction", "2009");
-        movieList.add(movie);
-
-        movie = new Movie("The LEGO Movie", "Animation", "2014");
-        movieList.add(movie);
-
-        movie = new Movie("Iron Man", "Action & Adventure", "2008");
-        movieList.add(movie);
-
-        movie = new Movie("Aliens", "Science Fiction", "1986");
-        movieList.add(movie);
-
-        movie = new Movie("Chicken Run", "Animation", "2000");
-        movieList.add(movie);
-
-        movie = new Movie("Back to the Future", "Science Fiction", "1985");
-        movieList.add(movie);
-
-        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
-        movieList.add(movie);
-
-        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
-        movieList.add(movie);
-
-        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
-        movieList.add(movie);
-
-        mAdapter.notifyDataSetChanged();
-    }
 }
 
 

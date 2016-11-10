@@ -73,7 +73,6 @@ public class ChangePasswordFragment extends Fragment {
                                     Intent intent = new Intent(getActivity(), UserArea.class);
                                     startActivity(intent);
 
-
                                 } else {
                                     progress.dismiss();
                                     Toast.makeText(ChangePasswordFragment.this.getActivity(), "Error Old Password", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.cibusmap.cibusmap;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,6 +12,9 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +35,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RestaurantsFragment extends Fragment {
+
+
+
 
 
     public RestaurantsFragment() {
@@ -51,7 +61,6 @@ public class RestaurantsFragment extends Fragment {
 
         final LinearLayout restBody =(LinearLayout) view.findViewById(R.id.restBody);
 
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             RelativeLayout imgPane;
             LinearLayout restPane,topPane,midPane,titlePane,botPane;
@@ -61,6 +70,7 @@ public class RestaurantsFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 try {
+                    android.app.AlertDialog.Builder Checkbuilder = new android.app.AlertDialog.Builder(RestaurantsFragment.this.getActivity());
                     JSONArray jsonResponse = new JSONArray(response);
                     for(int x=0;x<jsonResponse.length();x++)
                     {
