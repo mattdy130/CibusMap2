@@ -193,10 +193,10 @@ public class UserArea extends AppCompatActivity
             manager.beginTransaction()
                     .setCustomAnimations(R.anim.anim_slide_from_left, R.anim.slide_out_from_left)
                     .replace(R.id.RelativeLayout, HomeFragment, HomeFragment.getTag()).commit();
-            if (!sMapFragment.isAdded())
-                sfm.beginTransaction().add(R.id.map, sMapFragment).commit();
-            else
-                sfm.beginTransaction().show(sMapFragment).commit();
+            //if (!sMapFragment.isAdded())
+            //    sfm.beginTransaction().add(R.id.map, sMapFragment).commit();
+           // else
+           //     sfm.beginTransaction().show(sMapFragment).commit();
 
 
         } else if (id == R.id.nav_History) {
